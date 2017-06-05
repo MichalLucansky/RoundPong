@@ -17,6 +17,7 @@ class InterfaceController: WKInterfaceController,WKCrownDelegate {
         
         
         pushController(withName: "FirstController", context: nil)
+        GameScene.gameStatus = true
             }
     
     
@@ -46,18 +47,16 @@ class InterfaceController: WKInterfaceController,WKCrownDelegate {
     func crownDidRotate(_ crownSequencer: WKCrownSequencer?, rotationalDelta: Double) {
    
        
-        
+        if(GameScene.gameStatus){
         if rotationalDelta > 0 {
             GameScene.angle += 0.08
         }else if rotationalDelta < 0{
             GameScene.angle -= 0.08
-        }else if rotationalDelta == 0{
-        
+        }
         
         }
+    
     }
-    
-    
     
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user

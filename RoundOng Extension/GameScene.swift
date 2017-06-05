@@ -19,13 +19,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     private var circle = CircleBorder()
     static var angle : CGFloat = 0.1
     static var gameStatus = true
-    static var gameOverLabel = SKLabelNode()
+    private  var gameOver1 = LabelCreator(text: "", position: CGPoint(x: 0, y: 0), fontSize: 32, name: "GameOverLabel")
+    private var tap = LabelCreator(text: "Tap Twice to Continue...", position: CGPoint(x: 0, y: -90), fontSize: 23, name: "TapLabel")
+    private var gameOverLabel = SKLabelNode()
+    private var tapLab = SKLabelNode()
     private var score = 0
     private var playerNode = SKShapeNode()
     private var ballNode = SKSpriteNode()
     
     
     override func sceneDidLoad() {
+        
+        gameOverLabel = gameOver1.createLabel()
+        tapLab = tap.createLabel()
+        
+
         self.scene?.isPaused = true
         GameScene.gameStatus = true
         gameInit()
@@ -37,8 +45,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     private func gameInit(){
     
-    GameScene.gameOverLabel = childNode(withName: "GameOverLabel") as! SKLabelNode
-    GameScene.gameOverLabel.isHidden = true
+        if GameScene.gameStatus{
+            print("idem")
+    gameOverLabel.removeFromParent()
+    tapLab.removeFromParent()
+        }
+        
+   
         
     // Y position of the player paddle and radius of the circular border 
         
@@ -64,22 +77,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     ballNode = ball.ball()
     addChild(ballNode)
-    ballNode.physicsBody?.applyImpulse(CGVector(dx: 15, dy: 15))
+    ballNode.physicsBody?.applyImpulse(CGVector(dx: 12, dy: 12))
         
     }
     
     
     private func gameOver(){
-    
-            self.scene?.isPaused = true
-            playerNode.isHidden = true
-            ballNode.isHidden = true
-            childNode(withName: "GameOverLabel")?.isHidden = false
-            GameScene.angle = 0.1
-            GameScene.gameOverLabel.text = ("Your score is : \(score)")
-            score = 0
         
-
+        GameScene.angle = 0.1
+        score = 0
+        GameScene.gameStatus = false
+        gameOverLabel.text = "Your score is \(score) !"
+        addChild(gameOverLabel)
+        addChild(tapLab)
+        self.scene?.isPaused = true
+        playerNode.removeFromParent()
+        ballNode.removeFromParent()
+        childNode(withName: "moveCircleRadius")?.removeFromParent()
+        
         
     
     
@@ -106,12 +121,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    func randomFloat(from: CGFloat, to: CGFloat) -> CGFloat {
+   private  func randomFloat(from: CGFloat, to: CGFloat) -> CGFloat {
         let rand: CGFloat = CGFloat(Float(arc4random()) / 0xFFFFFFFF)
         return (rand) * (to - from) + from
     }
     
-    func randomDirection() -> CGFloat {
+    private func randomDirection() -> CGFloat {
         let speedFactor: CGFloat = 15
         if randomFloat(from: 0, to: 15) >= 7 {
             return -speedFactor
@@ -121,7 +136,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     
-    func moveControll(){
+    private func moveControll(){
         let ball = ballNode
         var xSpeed = sqrt(ball.physicsBody!.velocity.dx * ball.physicsBody!.velocity.dx)
         let ySpeed = sqrt(ball.physicsBody!.velocity.dy * ball.physicsBody!.velocity.dy)
@@ -154,4 +169,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
            
         }
     }
+    
+    
 }

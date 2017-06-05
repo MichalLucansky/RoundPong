@@ -14,7 +14,12 @@
             <objects>
                 <controller identifier="FirstController" id="yoK-48-bxX" customClass="FirstController" customModule="RoundOng_Extension">
                     <items>
-                        <button width="1" alignment="left" title="Start" id="IR4-ah-j1l">
+                        <label width="133" height="33" alignment="left" text="Round Pong" textAlignment="center" id="DFk-Fk-JRU">
+                            <color key="textColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </label>
+                        <button width="1" alignment="left" verticalAlignment="center" title="Start" id="IR4-ah-j1l">
+                            <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="font" type="italicSystem" weight="heavy" pointSize="15"/>
                             <connections>
                                 <action selector="gameStart" destination="yoK-48-bxX" id="Ews-Oz-4qc"/>
                             </connections>
@@ -44,7 +49,7 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="145" y="-773"/>
+            <point key="canvasLocation" x="-261" y="-773"/>
         </scene>
     </scenes>
 </document>

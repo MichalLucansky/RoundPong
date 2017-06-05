@@ -20,6 +20,7 @@
 		377A16381ECB69A20015E218 /* PlayerPaddle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377A16361ECB69A20015E218 /* PlayerPaddle.swift */; };
 		377A163A1ECB82030015E218 /* CircleBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377A16391ECB82030015E218 /* CircleBorder.swift */; };
 		377A163B1ECB82030015E218 /* CircleBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377A16391ECB82030015E218 /* CircleBorder.swift */; };
+		377A80281EE5B5A60059145C /* LabelCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377A80271EE5B5A60059145C /* LabelCreator.swift */; };
 		37AB69461E7D84F100A698C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AB69451E7D84F100A698C6 /* AppDelegate.swift */; };
 		37AB69481E7D84F100A698C6 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 37AB69471E7D84F100A698C6 /* GameScene.sks */; };
 		37AB694A1E7D84F100A698C6 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 37AB69491E7D84F100A698C6 /* Actions.sks */; };
@@ -89,6 +90,7 @@
 		377A16291ECB64D40015E218 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		377A16361ECB69A20015E218 /* PlayerPaddle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerPaddle.swift; sourceTree = "<group>"; };
 		377A16391ECB82030015E218 /* CircleBorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleBorder.swift; sourceTree = "<group>"; };
+		377A80271EE5B5A60059145C /* LabelCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelCreator.swift; sourceTree = "<group>"; };
 		37AB69421E7D84F100A698C6 /* test1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = test1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		37AB69451E7D84F100A698C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		37AB69471E7D84F100A698C6 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 				377A16361ECB69A20015E218 /* PlayerPaddle.swift */,
 				377A16391ECB82030015E218 /* CircleBorder.swift */,
 				37F396231ECC66BD00DF4C8B /* Ball.swift */,
+				377A80271EE5B5A60059145C /* LabelCreator.swift */,
 			);
 			path = "RoundOng Extension";
 			sourceTree = "<group>";
@@ -332,6 +335,7 @@
 				377A16241ECB64D40015E218 /* GameScene.swift in Sources */,
 				377A16201ECB64D40015E218 /* InterfaceController.swift in Sources */,
 				37F396761ECD9AEA00DF4C8B /* FirstController.swift in Sources */,
+				377A80281EE5B5A60059145C /* LabelCreator.swift in Sources */,
 				377A163B1ECB82030015E218 /* CircleBorder.swift in Sources */,
 				377A16261ECB64D40015E218 /* ExtensionDelegate.swift in Sources */,
 			);
