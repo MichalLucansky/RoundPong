@@ -1,11 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0820"
+   LastUpgradeVersion = "0830"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
       <BuildActionEntries>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "377A160D1ECB64D40015E218"
+               BuildableName = "RoundOng.app"
+               BlueprintName = "RoundOng"
+               ReferencedContainer = "container:test1.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
          <BuildActionEntry
             buildForTesting = "YES"
             buildForRunning = "YES"
@@ -32,9 +46,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "37AB69411E7D84F100A698C6"
-            BuildableName = "test1.app"
-            BlueprintName = "test1"
+            BlueprintIdentifier = "377A160D1ECB64D40015E218"
+            BuildableName = "RoundOng.app"
+            BlueprintName = "RoundOng"
             ReferencedContainer = "container:test1.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -51,16 +65,27 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <RemoteRunnable
+         runnableDebuggingMode = "2"
+         BundleIdentifier = "com.apple.Carousel"
+         RemotePath = "/test1">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "37AB69411E7D84F100A698C6"
-            BuildableName = "test1.app"
-            BlueprintName = "test1"
+            BlueprintIdentifier = "377A160D1ECB64D40015E218"
+            BuildableName = "RoundOng.app"
+            BlueprintName = "RoundOng"
             ReferencedContainer = "container:test1.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </RemoteRunnable>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "377A160D1ECB64D40015E218"
+            BuildableName = "RoundOng.app"
+            BlueprintName = "RoundOng"
+            ReferencedContainer = "container:test1.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -70,16 +95,27 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <RemoteRunnable
+         runnableDebuggingMode = "2"
+         BundleIdentifier = "com.apple.Carousel"
+         RemotePath = "/test1">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "37AB69411E7D84F100A698C6"
-            BuildableName = "test1.app"
-            BlueprintName = "test1"
+            BlueprintIdentifier = "377A160D1ECB64D40015E218"
+            BuildableName = "RoundOng.app"
+            BlueprintName = "RoundOng"
             ReferencedContainer = "container:test1.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </RemoteRunnable>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "377A160D1ECB64D40015E218"
+            BuildableName = "RoundOng.app"
+            BlueprintName = "RoundOng"
+            ReferencedContainer = "container:test1.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

@@ -9,81 +9,152 @@
 import SpriteKit
 import GameplayKit
 
-class GameScene: SKScene {
+class GameScene: SKScene,SKPhysicsContactDelegate {
     
-    private var label : SKLabelNode?
-    private var spinnyNode : SKShapeNode?
+    var gula = SKSpriteNode()
+    var lopta = SKSpriteNode()
+    
+    let path = UIBezierPath(arcCenter: CGPoint(x: 0, y: 0), radius: CGFloat(340), startAngle: .pi * -2, endAngle: CGFloat(0), clockwise: true)
+
+    var positionOfGula = CGPoint()
+    
+    var angel = CGFloat()
+    var padleMoveArray = [CGFloat]()
+    var actualDirection = CGFloat()
+    var direction = String()
+    let borderCategoryMask : UInt32 = 0x1 << 2
+    let borderCollisionMask : UInt32 = 0x1 << 1
+    let borderContaktMask : UInt32 = 0x1 << 1
+    
     
     override func didMove(to view: SKView) {
         
-        // Get label node from scene and store it for use later
-        self.label = self.childNode(withName: "//helloLabel") as? SKLabelNode
-        if let label = self.label {
-            label.alpha = 0.0
-            label.run(SKAction.fadeIn(withDuration: 2.0))
-        }
+    
+    self.physicsWorld.contactDelegate = self
+    angel = .pi * 3 / 2
+    addChild(createCircle())
+    
         
-        // Create shape node to use during mouse interaction
-        let w = (self.size.width + self.size.height) * 0.05
-        self.spinnyNode = SKShapeNode.init(rectOf: CGSize.init(width: w, height: w), cornerRadius: w * 0.3)
+    gula = childNode(withName: "testik") as! SKSpriteNode
+    lopta = childNode(withName: "lopta") as! SKSpriteNode
+    
+    lopta.physicsBody?.applyImpulse(CGVector(dx: -0.5, dy: -0.5))
+   
         
-        if let spinnyNode = self.spinnyNode {
-            spinnyNode.lineWidth = 2.5
+        
+          }
+    
+    
+    
+
+    private func padleMoveDirection(){
+        
+        if padleMoveArray.count == 2{
+            let temp = padleMoveArray[0]
             
-            spinnyNode.run(SKAction.repeatForever(SKAction.rotate(byAngle: CGFloat(M_PI), duration: 1)))
-            spinnyNode.run(SKAction.sequence([SKAction.wait(forDuration: 0.5),
-                                              SKAction.fadeOut(withDuration: 0.5),
-                                              SKAction.removeFromParent()]))
-        }
-    }
-    
-    
-    func touchDown(atPoint pos : CGPoint) {
-        if let n = self.spinnyNode?.copy() as! SKShapeNode? {
-            n.position = pos
-            n.strokeColor = SKColor.green
-            self.addChild(n)
-        }
-    }
-    
-    func touchMoved(toPoint pos : CGPoint) {
-        if let n = self.spinnyNode?.copy() as! SKShapeNode? {
-            n.position = pos
-            n.strokeColor = SKColor.blue
-            self.addChild(n)
-        }
-    }
-    
-    func touchUp(atPoint pos : CGPoint) {
-        if let n = self.spinnyNode?.copy() as! SKShapeNode? {
-            n.position = pos
-            n.strokeColor = SKColor.red
-            self.addChild(n)
+            let dir =  padleMoveArray[1]
+            
+            actualDirection = dir - temp
+            
+            if actualDirection < 0 {
+                direction = "UP"
+                angel += 0.05
+                
+                gula.position = calculatePosition(radius: 340, angel: angel)
+                gula.zRotation = angel
+                
+                
+            }else if actualDirection > 0{
+                direction = "DOWN"
+                angel -= 0.05
+                
+                gula.position = calculatePosition(radius: 340, angel: angel)
+               gula.zRotation = angel
+                
+                
+            }else if actualDirection == 0{
+                direction = "STOP"
+                
+                
+                
+            }
+            padleMoveArray.removeFirst()
+            
         }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if let label = self.label {
-            label.run(SKAction.init(named: "Pulse")!, withKey: "fadeInOut")
-        }
         
-        for t in touches { self.touchDown(atPoint: t.location(in: self)) }
+        for touch in touches{
+            let location = touch.location(in: self)
+            padleMoveArray.append(location.y)
+        }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { self.touchMoved(toPoint: t.location(in: self)) }
+        for touch in touches{
+            let location = touch.location(in: self)
+            padleMoveArray.append(location.y)
+        }
+
     }
-    
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { self.touchUp(atPoint: t.location(in: self)) }
+        padleMoveArray.removeAll()
     }
     
-    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { self.touchUp(atPoint: t.location(in: self)) }
+    func createCircle() -> SKShapeNode{
+        
+    
+    let circleShape = SKShapeNode()
+    
+    
+        circleShape.path = UIBezierPath(arcCenter: CGPoint(x: 0, y: 0), radius: CGFloat(340), startAngle: CGFloat(0), endAngle: .pi * 2, clockwise: true).cgPath
+        
+        circleShape.physicsBody = SKPhysicsBody(edgeChainFrom: path.cgPath)
+        circleShape.physicsBody?.usesPreciseCollisionDetection = true
+        
+       circleShape.name = "moveCircleRadius"
+        
+       circleShape.zPosition = 0
+       circleShape.physicsBody?.isDynamic = false
+       circleShape.physicsBody?.affectedByGravity = false
+       circleShape.physicsBody?.categoryBitMask = borderCategoryMask
+       circleShape.physicsBody?.contactTestBitMask = borderContaktMask
+       circleShape.physicsBody?.collisionBitMask = borderCollisionMask
+       
+  
+    return circleShape
+    
     }
+    func calculatePosition (radius: CGFloat, angel: CGFloat) -> CGPoint{
+    
+        var position = CGPoint()
+        
+        position.x = radius * cos(angel)
+        position.y =  radius * sin(angel)
+    
+    
+        return position
+    }
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        
+        if contact.bodyA.node?.name == "jozo" && contact.bodyB.node?.name == "lopta" || contact.bodyA.node?.name == "lopta" && contact.bodyB.node?.name == "jozo"{
+        print("kontakt")
+            contact.bodyB.node?.removeFromParent()
+        }
+        
+      
+        
+    }
+    
+  
     
     
     override func update(_ currentTime: TimeInterval) {
-        // Called before each frame is rendered
+       
+        padleMoveDirection()
+        
+        
     }
 }

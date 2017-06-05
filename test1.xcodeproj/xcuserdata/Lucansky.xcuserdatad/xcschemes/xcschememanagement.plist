@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>RoundOng.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>test1.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -12,6 +17,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>377A160D1ECB64D40015E218</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>37AB69411E7D84F100A698C6</key>
 		<dict>
 			<key>primary</key>
